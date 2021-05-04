@@ -1,9 +1,18 @@
 # CodeChallenge3 - Search
 
-TBD
+CLI search written in GO.
+
+## Usage
+
+```
+go run challenge3_search.go -source=https://appdev-code-challenge.s3.amazonaws.com/challenge3_search/SW_EpisodeIV.txt
+
+go run challenge3_search.go -h
+```
 
 ## Things I Learned
 
+- `flags.String(name, default, help msg)`, usefulf or CLI parameters
 - `go mod init (package name)`, 
   - for this project `go mod init github.com/yamori/challenge3_search`
   - where `challenge3_search` is the name of the entry file, convention
