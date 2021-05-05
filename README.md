@@ -1,6 +1,6 @@
 # CodeChallenge3 - Search
 
-CLI search written in GO.
+CLI search written in GO.  Currently only reads a remote URL and prints to CLI.
 
 ## Usage
 
@@ -12,7 +12,7 @@ go run challenge3_search.go -h
 
 ## Things I Learned
 
-- `flags.String(name, default, help msg)`, usefulf or CLI parameters
+- `flags.String(name, default, help msg)`, usefulf or CLI parameters, good [link](https://gobyexample.com/command-line-flags)
 - `go mod init (package name)`, 
   - for this project `go mod init github.com/yamori/challenge3_search`
   - where `challenge3_search` is the name of the entry file, convention
