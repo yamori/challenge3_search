@@ -24,7 +24,7 @@ func validateInputs() (string, error) {
 
 	flag.Parse()
 
-	return *fileLocation, nil
+	return *fileLocation, nil // de-reference from the pointer
 }
 
 func main() {
