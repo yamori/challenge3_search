@@ -22,7 +22,7 @@ func validateInputs() (string, error) {
 
 	fileLocation := flag.String("source", "foo", "source url of text")
 
-	flag.Parse()
+	flag.Parse() // actually performs the parse.  pointers etc.
 
 	return *fileLocation, nil // de-reference from the pointer
 }
