@@ -7,6 +7,7 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"strings"
 )
 
 func exitGracefully(err error) {
@@ -14,29 +15,42 @@ func exitGracefully(err error) {
 	os.Exit(1)
 }
 
-func validateInputs() (string, error) {
+func validateInputs() (string, string, error) {
 	// Validate arguments
 	if len(os.Args) < 2 {
-		return "", errors.New("a filepath argument is required")
+		return "", "", errors.New("a filepath argument is required")
 	}
 
 	fileLocation := flag.String("source", "foo", "source url of text")
+	searchString := flag.String("query", "foo", "query string")
 
 	flag.Parse() // actually performs the parse.  pointers etc.
 
-	return *fileLocation, nil // de-reference from the pointer
+	return *searchString, *fileLocation, nil // de-reference from the pointer
+}
+
+func iterateAndSearch(fullText_tokens []string, searchString string) {
+
+	for index, line := range fullText_tokens {
+		if strings.Contains(line, searchString) {
+			fmt.Printf(" %-7v ", fmt.Sprint(index))
+			fmt.Printf("%v\n", line)
+		}
+	}
 }
 
 func main() {
 	fmt.Println("*** Challenge3 Search CLI ***")
 
-	fileLocation, err := validateInputs()
+	searchString, fileLocation, err := validateInputs()
 
 	if err != nil {
 		exitGracefully(err)
 	}
 
-	fmt.Println(fileLocation)
+	fmt.Printf("QUERY:%v", searchString)
+	fmt.Printf("  SRC:%v\n", fileLocation)
+
 	response, err := http.Get(fileLocation)
 
 	if err != nil {
@@ -46,12 +60,22 @@ func main() {
 
 	defer response.Body.Close()
 
-	// Copy data from the response to standard output
-	n, err1 := io.Copy(os.Stdout, response.Body) //use package "io" and "os"
+	fullText, err := io.ReadAll(response.Body)
 	if err != nil {
-		fmt.Println(err1)
+		fmt.Println(err)
 		return
 	}
 
-	fmt.Println("Number of bytes copied to STDOUT:", n)
+	fullText_tokens := strings.Split(string(fullText), "\n")
+
+	iterateAndSearch(fullText_tokens, searchString)
+
+	// Copy data from the response to standard output
+	// n, err1 := io.Copy(os.Stdout, response.Body) //use package "io" and "os"
+	// if err != nil {
+	// 	fmt.Println(err1)
+	// 	return
+	// }
+
+	// fmt.Println("Number of bytes copied to STDOUT:", n)
 }
