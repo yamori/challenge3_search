@@ -4,10 +4,28 @@ CLI search written in GO.  Currently only reads a remote URL and prints to CLI.
 
 ## Usage
 
+### Development
+
 ```
 go run challenge3_search.go -query repair -source https://appdev-code-challenge.s3.amazonaws.com/challenge3_search/SW_EpisodeIV.txt
 
 go run challenge3_search.go -h
+```
+
+### Installed
+
+`go install` will place the binary at `$GOPATH/bin/`, and if this is on your terminal's `PATH`, it can be invoked directly.
+```
+go install
+
+challenge3_search -query repair -source https://appdev-code-challenge.s3.amazonaws.com/challenge3_search/SW_EpisodeIV.txt
+challenge3_search -query repair -source https://appdev-code-challenge.s3.amazonaws.com/challenge3_search/SW_EpisodeV.txt
+challenge3_search -query force -source https://appdev-code-challenge.s3.amazonaws.com/challenge3_search/SW_EpisodeVI.txt
+
+
+challenge3_search -query Force -source https://appdev-code-challenge.s3.amazonaws.com/challenge3_search/SW_EpisodeIV.txt
+challenge3_search -query Force -source https://appdev-code-challenge.s3.amazonaws.com/challenge3_search/SW_EpisodeV.txt
+challenge3_search -query Force -source https://appdev-code-challenge.s3.amazonaws.com/challenge3_search/SW_EpisodeVI.txt
 ```
 
 ## Things I Learned
@@ -22,4 +40,5 @@ go run challenge3_search.go -h
   - where `challenge3_search` is the name of the entry file, convention
 - `go install`
   - executed locally will install to `$GOPATH/bin/`, and if this is on `PATH` it can then be used immediately
+- dependencies: `go get github.com/gookit/color` will add to `go.mod` automatically
 - VSCode - go extensions, auto complete etc.

@@ -8,6 +8,8 @@ import (
 	"net/http"
 	"os"
 	"strings"
+
+	"github.com/gookit/color"
 )
 
 func exitGracefully(err error) {
@@ -33,14 +35,14 @@ func iterateAndSearch(fullText_tokens []string, searchString string) {
 
 	for index, line := range fullText_tokens {
 		if strings.Contains(line, searchString) {
-			fmt.Printf(" %-7v ", fmt.Sprint(index))
-			fmt.Printf("%v\n", line)
+			color.Green.Printf(" %-7v ", fmt.Sprint(index))
+			color.Println(strings.Replace(line, searchString, "<red>"+searchString+"</>", -1))
 		}
 	}
 }
 
 func main() {
-	fmt.Println("*** Challenge3 Search CLI ***")
+	color.Green.Printf("*** %s ***\n", "Challenge3 Search CLI")
 
 	searchString, fileLocation, err := validateInputs()
 
@@ -48,7 +50,7 @@ func main() {
 		exitGracefully(err)
 	}
 
-	fmt.Printf("QUERY:%v", searchString)
+	color.Print("QUERY:<red>" + searchString + "</>")
 	fmt.Printf("  SRC:%v\n", fileLocation)
 
 	response, err := http.Get(fileLocation)
