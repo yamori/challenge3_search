@@ -13,7 +13,7 @@ go run challenge3_search.go -h
 ## Things I Learned
 
 - padding when printing to CLI, `fmt.Printf(" %-7v ", fmt.Sprint(index))`
-- GO slices `[]string vs. [3]string`
+- GO slices `[]string vs. [3]string`, very important distinction.  Slices are memory flexible, and centered around the pointer instead of copying an entire array of data.  Read [here](https://medium.com/@marty.stepien/arrays-vs-slices-bonanza-in-golang-fa8d32cd2b7c) for more.
 - iterate over an array: `for _, line := range stringArr {`
 - GO `defer`, A defer statement defers the execution of a function until the surrounding function returns
 - `flags.String(name, default, help msg)`, usefulf or CLI parameters, good [link](https://gobyexample.com/command-line-flags)
