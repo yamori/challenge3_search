@@ -1,6 +1,8 @@
 # CodeChallenge3 - Search
 
-CLI text search (case sensitive) written in GO.  Currently only reads a remote URL and prints to CLI.
+CLI text search (of a remote file/URL) written in GO.
+
+Basically a poor imitation of `grep`.  It's for learning.
 
 ![Example Screen Shot of CLI search](media/example_sgrab.png)
 
