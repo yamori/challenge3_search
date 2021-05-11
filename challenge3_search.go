@@ -33,6 +33,7 @@ func validateInputs() (string, string, error) {
 
 func iterateAndSearch(fullText_tokens []string, searchString string) {
 
+	// note, fullText_tokens is a slice
 	for index, line := range fullText_tokens {
 		if strings.Contains(line, searchString) {
 			color.Green.Printf(" %-7v ", fmt.Sprint(index))
