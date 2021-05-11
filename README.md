@@ -4,6 +4,10 @@ CLI text search (of a remote file/URL) written in GO.
 
 Basically a poor imitation of `grep`.  It's for learning.
 
+My demonstration [video](https://www.youtube.com/watch?v=qs4Mrd7MTns) with narration.
+
+## Screengrab
+
 ![Example Screen Shot of CLI search](media/example_sgrab.png)
 
 ## Usage
