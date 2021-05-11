@@ -71,13 +71,4 @@ func main() {
 	fullText_tokens := strings.Split(string(fullText), "\n")
 
 	iterateAndSearch(fullText_tokens, searchString)
-
-	// Copy data from the response to standard output
-	// n, err1 := io.Copy(os.Stdout, response.Body) //use package "io" and "os"
-	// if err != nil {
-	// 	fmt.Println(err1)
-	// 	return
-	// }
-
-	// fmt.Println("Number of bytes copied to STDOUT:", n)
 }
